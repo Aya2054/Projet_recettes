@@ -1,0 +1,162 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Pirata+One&family=Roboto+Slab:wght@300&family=Roboto:wght@700&display=swap');
+*{
+    padding: 0;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    font-family: 'Roboto Slab', serif;
+}
+
+html{
+    height: 100%;
+    width: 100%;
+}
+
+/************************CONTENT 1******************/
+
+
+.icons{
+    height: 15px;
+    width:15px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+#top-bar{
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    justify-content: space-between;
+    height: 20px;
+    padding: 0 3%;
+    text-align: center;
+    font-size: 14px;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+#contact{
+    display: flex;
+    gap: 30px;
+    justify-content: space-between;
+}
+
+
+/************CONTENT 2****************/
+
+header{
+    height: 70px;
+    background-color: rgb(161, 114, 114);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+#menu{
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    padding: 15px;
+    color: white;
+}
+
+ul{
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+}
+
+li{
+    list-style: none;
+    margin-left: 30px;
+}
+
+li:hover{
+    border-bottom: 1px solid #ffffff;
+}
+
+#logo{
+    font-size: 18px;
+}
+
+#isa{
+    color: rgb(90, 32, 32);
+    letter-spacing: 2px;
+}
+
+#btn{
+    color: rgb(255, 255, 255);
+    background-color: rgb(153, 71, 71);
+    border: none;
+    font-size: 15px;
+    margin:0px 5px 5px 10px;
+    padding-left: 5px;
+    padding-right: 5px;
+    font-family: 'Roboto', sans-serif;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+#btn:hover{
+    background-color: white;
+    color: rgb(153, 71, 71);
+}
+
+.elm-menu{
+    color: white;
+}
+
+/************************SECTION*********************************/
+
+section{
+    height: 600px;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.664),rgba(0, 0, 0, 0.509)), url(images/bck2.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.centre{
+    margin: auto;
+    width: 60%;
+    color: white;
+    font-size: 18px;
+    padding-top: 200px;
+    justify-content: center;
+    text-align: center;
+}
+
+#isa-total{
+    color: rgb(159, 87, 87);
+    letter-spacing: 2px;
+    font-family: 'Roboto Slab', serif;
+}
+
+.centre h2{
+    font-size: 30px;
+    font-family: 'Roboto Slab', serif;
+    margin-bottom: 20px;
+}
+
+#maroc{
+    font-weight: 600;
+    color:rgb(255, 255, 255);
+    border-bottom: 2px solid #ffffff;
+}
+
+/******************* FOOTER **************************/
+
+footer p{
+    text-align: center;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    height: 30px;
+    background-color: rgb(161, 114, 114);
+    color: white;
+    font-size: 13px;
+    padding-top: 10px;
+}
