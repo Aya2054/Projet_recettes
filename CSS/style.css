@@ -22,23 +22,18 @@ html{
 }
 
 #top-bar{
-    background-color: rgb(234, 208, 208);
+    background-color: rgb(255, 255, 255);
     display: flex;
     justify-content: space-between;
     height: 20px;
     padding: 0 3%;
     text-align: center;
     font-size: 14px;
-    font-weight: 500;
 }
 
 a{
     text-decoration: none;
     color: black;
-}
-
-a:hover{
-    color: white;
 }
 
 #contact{
@@ -63,7 +58,7 @@ header{
     display: flex;
     justify-content: space-between;
     text-align: center;
-    padding: 8px;
+    padding: 15px;
     color: white;
 }
 
@@ -75,22 +70,14 @@ ul{
 
 li{
     list-style: none;
+    margin-left: 30px;
 }
 
 li:hover{
     border-bottom: 1px solid #ffffff;
 }
 
-#m:hover{
-    color: black;
-}
-
-#t:hover{
-    color: black;
-}
-
 #logo{
-    margin-top: 8px;
     font-size: 18px;
 }
 
@@ -98,7 +85,6 @@ li:hover{
     color: rgb(90, 32, 32);
     letter-spacing: 2px;
 }
-
 
 #btn{
     color: rgb(255, 255, 255);
@@ -108,7 +94,6 @@ li:hover{
     margin:0px 5px 5px 10px;
     padding-left: 5px;
     padding-right: 5px;
-    margin-top: 8px;
     font-family: 'Roboto', sans-serif;
     cursor: pointer;
     border-radius: 3px;
@@ -123,15 +108,11 @@ li:hover{
     color: white;
 }
 
-.elm-menu:hover{
-    color: white;
-}
-
 /************************SECTION*********************************/
 
 section{
     height: 600px;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.664),rgba(0, 0, 0, 0.509)), url(images/bck2.jpg);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.664),rgba(0, 0, 0, 0.509)), url(/Projet_recettes/IMG/bck2.jpg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -167,7 +148,7 @@ section{
 
 /******************* FOOTER **************************/
 
-footer{
+footer p{
     text-align: center;
     position: fixed;
     left: 0;
@@ -177,4 +158,5 @@ footer{
     background-color: rgb(161, 114, 114);
     color: white;
     font-size: 13px;
+    padding-top: 10px;
 }
