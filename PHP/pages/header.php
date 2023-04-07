@@ -6,12 +6,12 @@
             </div>
             <div id="contact">
                 <div class="tel">
-                    <img src="icons/phone-solid.svg" alt="phone" class="icons" id="t">
-                    <a href="tel:(07)668888339"> (07) 66 88 33 99</a>
+                    <i class="bi bi-telephone"></i>
+                    <a href="tel:(07)668888339" id="t"> (07) 66 88 33 99</a>
                 </div>
                 <div class="mail">
-                    <img src="icons/envelope-solid.svg" alt="email" class="icons" id="m">
-                    <a href="mail:isa-office@gmail.com"> isa-office@gmail.com</a>
+                    <i class="bi bi-envelope"></i>
+                    <a href="mail:isa-office@gmail.com" id="m"> isa-office@gmail.com</a>
                 </div>
             </div>
         </div>
@@ -21,10 +21,54 @@
             </div>
             <div>
                 <ul>
-                    <li><a href="#" class="elm-menu">Acceuil</a></li>
-                    <li><a href="#" class="elm-menu">Nos spécialités</a></li>
-                    <li><a href="#" class="elm-menu">Nos recettes</a></li>
-                    <li><a href="#" class="elm-menu">Opérations</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Acceuil
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                    </li>
+
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Nos spéacialités
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                    </li>
+
+
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Nos recettes
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Nos opérations
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                        </ul>
+                    </li>
+
+
+
+
                 </ul>
             </div>
             <div>
