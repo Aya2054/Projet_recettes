@@ -112,7 +112,7 @@ li:hover{
 
 section{
     height: 600px;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.664),rgba(0, 0, 0, 0.509)), url(/../IMG/bck2.jpg);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.664),rgba(0, 0, 0, 0.509)), url(/Projet_recettes/IMG/bck2.jpg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
