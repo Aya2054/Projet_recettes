@@ -10,7 +10,7 @@ class Template
         <html lang="en">
         <head>
             <meta charset="UTF-8">
-            <title>Game Corner</title>
+            <title>ISA-recettes</title>
 
             <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
                   integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
@@ -22,6 +22,7 @@ class Template
 
 
             <link rel="stylesheet" href="<?php echo $GLOBALS['CSS_DIR'] ?>style.css">
+            <link rel="stylesheet" href="<?php echo $GLOBALS['CSS_DIR'] ?>login.css">
 
         </head>
         <body>
