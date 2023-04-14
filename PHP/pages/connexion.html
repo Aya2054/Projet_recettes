@@ -8,8 +8,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
 
     
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.0/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="login.css">
     <title>Connexion | admin</title>
 </head>
@@ -33,18 +31,6 @@
                             </ul>
                         </li>
 
-
-        
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                              Nos recettes
-                            </a>
-                            <ul class="dropdown-menu">
-                              <li><a class="dropdown-item" href="#">Action</a></li>
-                              <li><a class="dropdown-item" href="#">Another action</a></li>
-                              <li><a class="dropdown-item" href="#">Something else here</a></li>
-                            </ul>
-                        </li>
 
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -85,7 +71,6 @@
     <footer>
             <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex, mollitia!
             </p>
-            
     </footer>
 </body>
 </html>
@@ -121,7 +106,7 @@
 
     const inputs=document.querySelectorAll('.mesinputs')
 
-    formulaire.addEventListener('submit', function(event) {
+    formulaire.addEventListener('submit', function() {
         event.preventDefault();
 
         if (name.value.trim() === '' || passwordd.value.trim() === '') {
@@ -132,7 +117,7 @@
         } else {
             erreur.classList.remove('afficher');
             erreur.classList.add('cacher');
-            // Ajouter la vérification du mot de passe ici
+            
         }
     });
 </script>
