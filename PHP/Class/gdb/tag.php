@@ -2,7 +2,9 @@
 
 namespace gdb;
 
-class tag
+use pdo_wrapper\pdoWrapper;
+
+class tag extends PdoWrapper
 {
     public const UPLOAD_DIR = "uploads/";
 
