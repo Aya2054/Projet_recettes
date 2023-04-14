@@ -1,4 +1,5 @@
 <?php
+$logged = isset($_SESSION['nickname']) ;
 include "../Config/config.php";
 
 require ".." . DIRECTORY_SEPARATOR .'class'.DIRECTORY_SEPARATOR.'Autoloader.php' ;
@@ -7,6 +8,10 @@ Autoloader::register();
 
 <!-- Démarre le buffering -->
 <?php ob_start() ?>
+
+<?php if($logged): ?>
+    <h1>Hi <?php echo $_SESSION['nickname'] ?>, </h1>
+<?php endif; ?>
 
 <section>
     <div class="centre">
