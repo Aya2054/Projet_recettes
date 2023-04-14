@@ -2,7 +2,6 @@
 *{
     padding: 0;
     margin: 0;
-    font-family: 'Poppins', sans-serif;
     font-family: 'Roboto Slab', serif;
 }
 
@@ -13,9 +12,40 @@ html{
     background-position: top;
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
-/************************CONTENT 1******************/
+/********************** HEADER *****************************/
+
+
+header{
+    background-color: rgb(182, 71, 71);
+    position: fixed;
+    width: 100%;
+    height: 10vh;
+}
+
+
+.dropdown-menu{
+    background-color: #cd4848b8;
+}
+
+.dropdown-item{
+    color: white;
+}
+
+#btn{
+    background-color: white;
+    color: #cd4848;
+    right: 30px;
+}
+
+#btn:hover{
+    color: rgb(205, 109, 19);
+}
+
 
 
 
@@ -53,13 +83,6 @@ li:hover{
     border-bottom: 1px solid #ffffff;
 }
 
-#m:hover{
-    color: rgb(255, 255, 255);
-}
-
-#t:hover{
-    color: rgb(255, 255, 255);
-}
 
 #logo{
     margin-top: 8px;
@@ -94,63 +117,50 @@ li:hover{
     color: rgb(153, 71, 71);
 }
 
-/************************SECTION*********************************/
 
-section{
-    height: 750px;
-    
+
+
+/********************** LE FORMULAIRE DE CONNEXION **********************/
+
+#formulaire {
+    padding: 20px;
+    background-image: linear-gradient(rgb(192, 39, 39),rgba(250, 165, 95, 0.724));
+    width:20%;
+    float: right;
+    margin-right: 220px;
+    margin-top: 100px;
+    height: 430px;
+    color: white;
+    font-size: 15px;
+  }
+  
+  
+#formulaire legend{
+    font-size: 25px;
+    text-align: center;
+    padding-bottom:  20px;
+
+}
+
+hr{
+    border: 1px solid #ffffff;
 }
 
 
-
-/********************ICONS**************/ 
-
-
-i{
-    color: rgb(255, 255, 255);
-}
-
-
-
-
-/************NOUVELLE MODIFICATION SITE WEB******************/
-
-
-#btn{
-    background-color: white;
-    color: #cd4848;
-    right: 30px;
-}
-
-#btn:hover{
-    color: rgb(205, 109, 19);
-}
-
-
-
-
-#meselements{
-    margin-top: 10px;
-}
-
-footer{
-        background-color:rgba(250, 165, 95, 0.724) ;
-}
-
-
-header{
-    background-color: rgb(182, 71, 71);
-    position: fixed;
+input{
     width: 100%;
-    height: 10vh;
+    border: none;
+    padding: 5px;
 }
 
-
-.dropdown-menu{
-    background-color: #cd4848b8;
+#btn2{
+    width: 100%;
+    background-color: white;
+    color: rgb(205, 88, 15);
+    font-size: 16px;
 }
 
-.dropdown-item{
+#btn2:hover{
     color: white;
     background-color: #cd4848;
     cursor: pointer;
@@ -166,11 +176,59 @@ header{
     color: rgb(205, 109, 19);
 }
 
-footer div{
-    justify-content: space-between;
-    gap: 30px;
+
+/************** ICON YEUX ***********************/
+
+i{
+    color: rgb(0, 0, 0);
 }
 
+/**********************************************/
+
+#forgetpsw{
+    margin-left: 65px;
+    font-size: 10px;
+    color: #cd4848;
+}
+
+
+#sec1 {
+    position: relative;
+}
+
+#password {
+    padding-right: 30px; 
+}
+
+#toggle-password {
+    position: absolute;
+    right: 10px;
+    top: 5px;
+    z-index: inherit;
+}
+
+
+/************************ Message d'erreur ************************/
+
+.afficher{
+    background-color: #d01414;
+    font-size: 14px;
+    color: white;
+    background-color: #cd4848;
+    cursor: pointer;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-left: 10px;
+    padding-bottom: 10px;
+    font-weight: 500;
+}
+
+.cacher{
+    display: none;
+}
+
+
+/************** FOOTER **************/
 footer{
     text-align: center;
     position: fixed;
@@ -178,6 +236,7 @@ footer{
     bottom: 0;
     right: 0;
     height: 30px;
-    background-color:rgba(250, 165, 95, 0.724) ;color: white;
+    background-color:rgba(250, 165, 95, 0.724) ;
+    color: white;
     font-size: 13px;
 }
