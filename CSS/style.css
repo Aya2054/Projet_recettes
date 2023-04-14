@@ -49,13 +49,6 @@ li:hover{
     border-bottom: 1px solid #ffffff;
 }
 
-#m:hover{
-    color: rgb(255, 255, 255);
-}
-
-#t:hover{
-    color: rgb(255, 255, 255);
-}
 
 #logo{
     margin-top: 8px;
@@ -169,7 +162,7 @@ i{
     margin-top: 10px;
 }
 
-
+/****************** HEADER *********************/
 
 header{
     background-color: rgb(182, 71, 71);
@@ -197,7 +190,20 @@ header{
     color: rgb(205, 109, 19);
 }
 
-footer div{
-    justify-content: space-between;
-    gap: 30px;
+
+/***********CONTACT************/
+#contacter{
+    font-size: 13px;
+    padding: 5px;
+}
+
+
+/*********** BOUTON DE RECHERCHE ************/
+#submit{
+padding: 10px 20px;
+background-color: #cd4848;
+color: #fff;
+border: none;
+border-radius: 0 5px 5px 0;
+cursor: pointer;
 }
