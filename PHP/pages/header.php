@@ -1,3 +1,7 @@
+<?php
+$logged = isset($_SESSION['nickname']) ;
+?>
+
 <header>
     <nav>
         <div id="top-bar">
@@ -57,6 +61,7 @@
                         </ul>
                     </li>
 
+                    <?php if($logged):?>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Nos opérations
@@ -65,15 +70,26 @@
                             <li><a class="dropdown-item" href="#">Action</a></li>
                         </ul>
                     </li>
-
-
+                    <?php endif; ?>
 
 
                 </ul>
             </div>
-            <div>
-                <input type="button" value="Connexion" id="btn">
-            </div>
+
+            <?php if($logged):?>//a ajouter
+                <a class="btn " role="button" href="logout.php">
+                    <div>
+                        <input type="button" value="déconnexion" id="btn">
+                    </div>
+                </a>
+            <?php else: ?>
+                <a class="btn " role="button" href="login.php">
+                    <div>
+                        <input type="button" value="Connexion" id="btn">
+                    </div>
+                </a>
+            <?php endif; ?>
+
         </div>
     </nav>
 </header>
