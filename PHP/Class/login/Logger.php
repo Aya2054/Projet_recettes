@@ -1,5 +1,5 @@
 <?php
-namespace magic ;
+namespace login ;
 
 use gdb\recette;
 
@@ -12,13 +12,13 @@ class Logger
                 <?php echo $message ?>
             </div>
         <?php endif; ?>
-        <form action="<?php $action ?>" id="formulaire">
+        <form method="post" action="<?php $action ?>" id="formulaire">
             <legend>Log In</legend> <hr> <br>
             <label for="name">Username: </label> <br>
-            <input type="text" id="name" value="<?php echo $username ?>">
+            <input type="text" id="name" name="username" value="<?php echo $username ?>">
             <br>
             <label for="password">Password: </label> <br>
-            <input type="password">
+            <input type="password" name="password">
             <br> <br>  <br>
             <input type="submit" value="Se connecter" id="btn">
         </form>
@@ -26,8 +26,10 @@ class Logger
     }
 
     public function log(string $username, string $password) : array{
-        // assuming you have a database connection
-        $db = new recette();
+
+        // les data devraient être récupérées dans une base de données...
+        $user = "aya" ;
+        $pwd = "ayouya1234" ;
 
         $error = null ;
         $nick = null ;
@@ -36,26 +38,18 @@ class Logger
             $error = "username is empty" ;
         }elseif (empty($password)){
             $error = "password is empty" ;
+        }elseif ($user == $username and $pwd == $password){
+            $granted = true ;
+            $nick = htmlspecialchars("ayouya") ;
         }else{
-            // query the database to retrieve the user's data
-            $stmt = $db->prepare('SELECT * FROM users WHERE username = ?');
-            $stmt->execute([$username]);
-            $user = $stmt->fetch(PDO::FETCH_ASSOC);
-
-            if (!$user) {
-                $error = "Authentication failed";
-            } elseif (!password_verify($password, $user['password'])) {
-                $error = "Authentication failed";
-            } else {
-                $granted = true;
-                $nick = htmlspecialchars($user['nickname']);
-            }
+            $error = "Authetication Failed" ;
         }
         return array(
             'granted' => $granted,
             'nick' => $nick,
             'error' => $error
         ) ;
+
     }
 
 
