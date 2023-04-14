@@ -3,7 +3,7 @@ require_once "../Config/config.php";
 
 require ".." . DIRECTORY_SEPARATOR . 'class' . DIRECTORY_SEPARATOR . 'Autoloader.php';
 Autoloader::register();
-
+echo "hello";
 $gdb = new \gdb\recette("gamesdb");
 $data = $gdb->generer_auto();
 //var_dump($data);
