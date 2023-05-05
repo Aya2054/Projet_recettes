@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.0/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="afficher.css">
+    <title>Document</title>
+</head>
+<body>
+
+    <header>
+        <nav>
+          <div id="menu">
+            <div>
+              <a href="">
+                <h1 id="logo" class="elm-menu"><span id="isa">ISA</span>-Recettes</h1>
+              </a>
+            </div>
+            <div>
+              <ul>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    Contact
+                  </a>
+                  <ul class="dropdown-menu" id="contacter">
+                    <li><a href="mail:isa-office@gmail.com" id="m"><i class="bi bi-envelope"></i> isa-office@gmail.com</a>
+                    </li>
+                    <li><a href="tel:(07)668888339" id="t"><i class="bi bi-telephone"></i> (07) 66 88 33 99</a></li>
+                  </ul>
+                </li>
+    
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    Opérations
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Ajouter une recette</a></li>
+                    <li><a class="dropdown-item" href="#">Supprimer une recette</a></li>
+                    <li><a class="dropdown-item" href="#">Modifier une recette</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <div>
+                <button value="Connexion" id="btn">Connexion</button>
+              </div>
+            </div>
+          </div>
+        </nav>
+    </header>
+
+
+    <section>
+        <h1>Ajouter une recette</h1>
+        <form action="#" method="post">
+          <label for="title">Titre :</label>
+          <input type="text" id="title" name="title" required>
+      
+          <label for="description">Description :</label>
+          <textarea id="description" name="description" required></textarea>
+      
+          <label for="image">Image :</label>
+          <input type="file" id="image" name="image" accept="image/*" required>
+      
+          <label for="ingredients">Ingrédients :</label>
+          <textarea id="ingredients" name="ingredients" required></textarea>
+      
+          <label for="tags">Tags :</label>
+          <input type="text" id="tags" name="tags" required>
+      
+          <input type="submit" value="Ajouter">
+        </form>
+      </section>
+      
+      
+      <footer>
+        <div>
+          <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex, mollitia!</p>
+        </div>
+      </footer>
+</body>
+</html>
+
+<style>
+
+section {
+    color: white;
+    font-weight: 600;
+    font-size: 16px;
+    margin-top: 100px;
+    margin: 0 auto;
+    max-width: 600px;
+    padding: 20px;
+    background: linear-gradient(135deg,rgb(235, 161, 86),#e07474, rgb(188, 61, 57));
+    border-radius: 5px;
+    width: 80%; 
+    text-align: center;
+}
+
+h1 {
+  font-size: 28px; 
+  margin-bottom: 20px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+input[type="text"],
+textarea,
+input[type="file"] {
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  margin-bottom: 20px;
+  width: 100%; /* pour remplir la largeur disponible */
+  box-sizing: border-box; /* pour inclure le padding dans la largeur */
+}
+
+textarea {
+  height: 150px;
+}
+
+input[type="submit"] {
+  background-color: #0388d5;
+  
+  color: #ffffff;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover{
+    color: #0388d5;
+    background-color: white;
+}
+
+
+h1{
+margin-top: 50px;
+}
+
+</style>
+
+<script>
+    //Selection de notre formulaire d'ajout
+    const form = document.querySelector('form');
+    //Récupération de notre bouton Ajouter
+    const submitButton = form.querySelector('input[type="submit"]');
+
+    //Après le click sur Ajouter
+    submitButton.addEventListener('click', (event) => {
+    const inputs = form.querySelectorAll('input[required], textarea[required]');
+  
+  inputs.forEach((input) => {
+    if (!input.value) {
+      event.preventDefault();
+      alert(`Le champ "${input.name}" est requis.`);
+    }
+  });
+});
+
+
+</script>
