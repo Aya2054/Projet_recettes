@@ -1,0 +1,279 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Pirata+One&family=Roboto+Slab:wght@300&family=Roboto:wght@700&display=swap');
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto Slab', serif;
+}
+
+
+
+
+html{
+    height: 100%;
+    width: 100%;
+}
+
+
+
+/************************HEADER******************/
+
+/***********CONTACT************/
+#contacter{
+    font-size: 13px;
+    padding: 5px;
+}
+
+header{
+    background-color: rgb(182, 71, 71);
+    position: fixed;
+    width: 100%;
+    height: 10vh;
+}
+
+
+.dropdown-menu{
+    background-color: #cd4848b8;
+}
+
+.dropdown-item{
+    color: white;
+}
+
+#btn{
+    background-color: white;
+    color: #cd4848;
+    right: 30px;
+}
+
+#btn:hover{
+    color: rgb(205, 109, 19);
+}
+
+
+a{
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+}
+
+a:hover{
+    color: rgb(255, 255, 255);
+}
+
+/************CONTENT 2****************/
+
+
+#menu{
+    padding-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    color: white;
+}
+
+ul{
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+}
+
+li{
+    list-style: none;
+}
+
+li:hover{
+    border-bottom: 1px solid #ffffff;
+}
+
+#m:hover{
+    color: rgb(255, 255, 255);
+}
+
+#t:hover{
+    color: rgb(255, 255, 255);
+}
+
+#logo{
+    margin-top: 8px;
+    margin-left: 10px;
+    font-size: 19px;
+}
+
+#isa{
+    color: rgb(133, 29, 29);
+    letter-spacing: 2px;
+    font-weight: 600;
+}
+
+
+#btn{
+    color: rgb(255, 255, 255);
+    background-color: rgb(153, 71, 71);
+    border: none;
+    font-size: 15px;
+    margin:0px 5px 5px 10px;
+    padding-left: 5px;
+    padding-right: 5px;
+    margin-right: 10px;
+    margin-top: 8px;
+    font-family: 'Roboto', sans-serif;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+#btn:hover{
+    background-color: white;
+    color: rgb(153, 71, 71);
+}
+
+
+
+#btn{
+    background-color: white;
+    color: #cd4848;
+    right: 30px;
+}
+
+#btn:hover{
+    color: rgb(205, 109, 19);
+}
+
+
+
+
+.dropdown-menu{
+    background-color: #cd4848b8;
+}
+
+.dropdown-item{
+    color: white;
+}
+
+#btn{
+    background-color: white;
+    color: #cd4848;
+    right: 30px;
+}
+
+#btn:hover{
+    color: rgb(205, 109, 19);
+}
+
+/******************* FOOTER *******************/
+
+footer{
+    text-align: center;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    height: 30px;
+    background-color:rgba(250, 165, 95, 0.724) ;
+    color: white;
+    font-size: 13px;
+}
+
+
+/************************* ELEMENT DU CENTRE ********************/
+h2{
+    margin-top: 60px;
+    font-size: 25px;
+}
+
+
+main {
+    margin-top: 10vh;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+
+form {
+    display: flex;
+    margin-bottom: 20px;
+  }
+  
+#inputrechercher{
+    flex-grow: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 5px 0 0 5px;
+    background-color:rgba(255, 229, 208, 0.854) ;
+}
+  
+#submit{
+    padding: 10px 20px;
+    background-color: #cd4848;
+    color: #fff;
+    border: none;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+}
+
+/********************* LES RECETTES **********************/
+
+
+.recipe {
+    display: flex;
+    background: linear-gradient(rgb(136, 18, 18),rgba(0, 0, 0, 0.114)), url(images/loz.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    flex-direction: column;
+    align-items: center;
+    margin: 50px;
+    padding: 20px;
+    background-color: #d89999;
+    color: white;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px 0px rgba(136, 134, 134, 0.2);
+}
+
+.recipe-details {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.recipe-details img {
+    margin-top: 30px;
+    max-width: 250px;
+    margin-right: 50px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px 2px rgba(255, 255, 255, 0.8);
+}
+
+
+.recipe h3 {
+    margin: 0;
+    font-size: 24px;
+    text-align: center;
+}
+
+.recipe p {
+    margin: 0;
+    text-align: center;
+}
+
+.recipe a {
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+    color: white;
+    text-decoration: none;
+    border: 1px solid white;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.recipe a:hover {
+    background-color: white;
+    color: #cd4848;
+}
+
+img{
+    width: 500px;
+    height: 300px;
+    object-fit: cover;
+}
