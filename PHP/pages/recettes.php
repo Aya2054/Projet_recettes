@@ -3,18 +3,16 @@ require_once "../Config/config.php";
 
 require ".." . DIRECTORY_SEPARATOR . 'class' . DIRECTORY_SEPARATOR . 'Autoloader.php';
 Autoloader::register();
-echo "hello";
 $gdb = new \gdb\recette("gamesdb");
 $data = $gdb->generer_auto();
-//var_dump($data);
 
 ?>
 
 <!-- Démarre le buffering -->
 <?php ob_start() ?>
 
-<div class="title">GAMES</div>
-<section class="games-list">
+<div class="title">Recettes</div>
+<section class="">
     <?php foreach ($data as $d): ?>
         <?= $d->getHTML(); ?>
     <?php endforeach; ?>
