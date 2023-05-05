@@ -23,6 +23,7 @@ class Template
 
             <link rel="stylesheet" href="/../Projet_recettes/CSS/style.css">
             <link rel="stylesheet" href="/../Projet_recettes/CSS/login.css">
+            <link rel="stylesheet" href="/../Projet_recettes/CSS/afficher.css">
 
         </head>
         <body>
