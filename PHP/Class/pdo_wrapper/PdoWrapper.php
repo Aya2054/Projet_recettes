@@ -14,7 +14,7 @@ class pdoWrapper
     private $db_port;
     private $pdo;
 
-    public function __construct($db_name, $db_host = '127.0.0.1', $db_port = '3306', $db_user = 'root', $db_pwd = '')
+    public function __construct($db_name, $db_host = 'localhost', $db_port = '3306', $db_user = 'root', $db_pwd = '')
     {
         $this->db_name = $db_name;
         $this->db_host = $db_host;
