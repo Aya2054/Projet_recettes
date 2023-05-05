@@ -6,15 +6,15 @@ class tagRenderer
 {
     public function getHTML()
     { ?>
-        <article class="game neon">
+        <article class="">
             <h1><?= $this->name ?></h1>
-            <div class="game-content">
+            <div class="">
                 <?php if ($this->image != null) : ?>
 
-                    <img src="<?= $GLOBALS['DOCUMENT_DIR'] . "../" . \gdb\GameDB::UPLOAD_DIR . $this->image ?>">
+                    <img src="<?= $GLOBALS['DOCUMENT_DIR'] . "../" . \gdb\tag::UPLOAD_DIR . $this->image ?>">
 
                 <?php endif; ?>
-                <div class="game-description">
+                <div class="">
                     <?= $this->description ?>
                 </div>
             </div>
