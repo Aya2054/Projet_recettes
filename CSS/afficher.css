@@ -178,8 +178,9 @@ footer{
 h2{
     margin-top: 60px;
     font-size: 25px;
+    margin-left: 280px;
+    font-weight: bolder;
 }
-
 
 main {
     margin-top: 10vh;
@@ -216,19 +217,21 @@ form {
 
 .recipe {
     display: flex;
-    background: linear-gradient(rgb(136, 18, 18),rgba(0, 0, 0, 0.114)), url(images/loz.jpg);
+    background: linear-gradient(rgb(136, 18, 18),rgba(0, 0, 0, 0.114)), url(/Projet_recettes/IMG/loz.jpg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     flex-direction: column;
     align-items: center;
-    margin: 50px;
+    margin: 50px auto;
     padding: 20px;
     background-color: #d89999;
     color: white;
     border-radius: 5px;
     box-shadow: 0px 0px 10px 0px rgba(136, 134, 134, 0.2);
+    max-width: 800px;
 }
+
 
 .recipe-details {
     display: flex;
