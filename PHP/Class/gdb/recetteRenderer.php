@@ -6,15 +6,15 @@ class recetteRenderer
 {
     public function getHTML()
     { ?>
-        <article class="game neon">
+        <article class=" ">
             <h1><?= $this->titre ?></h1>
-            <div class="game-content">
+            <div class="">
                 <?php if ($this->image != null) : ?>
 
-                    <img src="<?= $GLOBALS['DOCUMENT_DIR'] . "../" . \gdb\GameDB::UPLOAD_DIR . $this->image ?>">
+                    <img src="<?= $GLOBALS['DOCUMENT_DIR'] . "../" . \gdb\recette::UPLOAD_DIR . $this->image ?>">
 
                 <?php endif; ?>
-                <div class="game-description">
+                <div class="">
                     <?= $this->description ?>
                 </div>
             </div>
