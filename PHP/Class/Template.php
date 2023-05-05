@@ -21,8 +21,8 @@ class Template
             <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.0/font/bootstrap-icons.css">
 
 
-            <link rel="stylesheet" href="<?php echo $GLOBALS['CSS_DIR'] ?>style.css">
-            <link rel="stylesheet" href="<?php echo $GLOBALS['CSS_DIR'] ?>login.css">
+            <link rel="stylesheet" href="/../Projet_recettes/CSS/style.css">
+            <link rel="stylesheet" href="/../Projet_recettes/CSS/login.css">
 
         </head>
         <body>
