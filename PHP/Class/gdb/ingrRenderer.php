@@ -6,12 +6,12 @@ class ingrRenderer
 {
     public function getHTML()
     { ?>
-        <article class="game neon">
+        <article class="">
             <h1><?= $this->nom ?></h1>
-            <div class="game-content">
+            <div class="">
                 <?php if ($this->image != null) : ?>
 
-                    <img src="<?= $GLOBALS['DOCUMENT_DIR'] . "../" . \gdb\GameDB::UPLOAD_DIR . $this->image ?>">
+                    <img src="<?= $GLOBALS['DOCUMENT_DIR'] . "../" . \gdb\ingredient::UPLOAD_DIR . $this->image ?>">
 
                 <?php endif; ?>
 
