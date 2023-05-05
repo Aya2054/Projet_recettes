@@ -78,16 +78,22 @@ class recette extends PdoWrapper
             'image' => $imgName
         ];
 
-        //recuperer l id de la recette q'on veut creer
-        $id_recette = $this->exec(
-            "SELECT id_recette FROM recette WHERE TITRE ='$titre'",
-            null);
+        if(!empty($ingredients) && !empty($tags)){
+            //recuperer l id de la recette q'on veut creer
+            $id_recette = $this->exec(
+                "SELECT id_recette FROM recette WHERE TITRE ='$titre'",
+                null);
 
-        //pour affecter les ingredients à cette recette
-        $this->recette_ingredients($id_recette, $ingredients);
+            if(!empty($ingredients)) {
+                //pour affecter les ingredients à cette recette
+                $this->recette_ingredients($id_recette, $ingredients);
+            }
+            if(!empty($tags)) {
+                //affecter les tags à cette recette
+                $this->recette_tags($id_recette, $tags);
+            }
+        }
 
-        //affecter les tags à cette recette
-        $this->recette_tags($id_recette, $tags);
 
         return $this->exec($query, $params);
     }
