@@ -1,4 +1,5 @@
 <?php
+session_start() ;
 $logged = isset($_SESSION['nickname']) ;
 include "../Config/config.php";
 
@@ -15,9 +16,13 @@ Autoloader::register();
 
 <section>
     <div class="centre">
-        <h2>Bienvenue dans notre site  <span id="isa-total">ISA-Recettes</span></h2>
-        <p>Découvrez nos recettes <span id="maroc">100% marocaines</span> sur notre site. Commencez votre recherche dès maintenant pour savourer des plats authentiques, frais et exotiques.</p>
-        <input type="text"style="border-radius: 10px; border:none; margin-top: 40px; width: 90%;padding:7px" placeholder="Rechercher ...">
+        <h2>Bienvenue chez <span id="isa-total">ISA-Recettes</span></h2>
+        <p>Découvrez des recettes simples et savoureuses sur notre site. Trouvez votre inspiration culinaire dès maintenant et ajoutez une touche de saveur à votre vie quotidienne.</p>
+        <form class="form-inline">
+            <div class="input-group">
+        <input type="text"style="border-radius: 10px; border:none; margin-top: 40px; width: 90%;padding:7px" placeholder="recettes, ingredients, tags......">
+            </div>
+        </form>
     </div>
 </section>
 
