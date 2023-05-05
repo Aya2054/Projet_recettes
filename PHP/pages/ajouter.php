@@ -11,12 +11,17 @@ $gf = new \gdb\recetteForm();
 <?php ob_start() ?>
 
 <?php
-if (empty($_POST['name'])) {
+if (empty($_POST['title'])) {
     $gf->generateForm();
 } else {
     $imgFile = isset($_FILES['image']) ? $_FILES['image'] : null;
-    $gf->createRecette($_POST['titre'], $_POST['description'], $imgFile);
+    if ($imgFile != null) {
+        $gf->createRecette($_POST['title'], $_POST['description'], $imgFile);
+    } else {
+        echo "img vide";
+    }
 }
+
 ?>
 
 <?php $content = ob_get_clean() ?>
