@@ -6,18 +6,17 @@ class recetteRenderer
 {
     public function getHTML()
     { ?>
-        <article class=" ">
-            <h1><?= $this->titre ?></h1>
-            <div class="">
+        <div class="recipe">
+            <h3><?= $this->titre ?></h3>
+        <div class="recipe-details">
                 <?php if ($this->image != null) : ?>
-
-                    <img src="<?= $GLOBALS['DOCUMENT_DIR'] . "../" . \gdb\recette::UPLOAD_DIR . $this->image ?>">
+                    <img src="/Projet_recettes/PHP/uploads/recettes/<?= $this->image ?>" alt="Description de l'image">
 
                 <?php endif; ?>
-                <div class="">
-                    <?= $this->description ?>
-                </div>
+            <p><?= $this->description ?></p>
+        </div>
+            <a href="#">Voir la recette</a>
+
             </div>
-        </article>
     <?php }
 }
