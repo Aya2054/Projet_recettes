@@ -12,11 +12,12 @@ $data = $gdb->generer_auto();
 <?php ob_start() ?>
 
 <div>Recettes</div>
-<section>
+<h2>Résultats de recherche</h2>
+<div class="recipes-list">
     <?php foreach ($data as $d): ?>
         <?= $d->getHTML(); ?>
     <?php endforeach; ?>
-</section>
+</div>
 
 <!-- Récupère le contenu du buffer (et le vide) -->
 <?php $content = ob_get_clean() ?>
