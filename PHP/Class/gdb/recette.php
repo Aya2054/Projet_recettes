@@ -8,7 +8,7 @@ include __DIR__ . "../../../Config/DB_config.php";
 
 class recette extends PdoWrapper
 {
-    public const UPLOAD_DIR = "uploads_recette/";
+    public const UPLOAD_DIR = "uploads/recettes/";
 
     public function __construct()
     {
@@ -65,11 +65,13 @@ class recette extends PdoWrapper
             //preparer le repertoire qui doit contenir le fichier
             $dirname = $GLOBALS['PHP_DIR'] . self::UPLOAD_DIR;
             //si le repertoire n'est pas encore cree on doit le creer
+            var_dump($dirname);
             if (!is_dir($dirname)) mkdir($dirname);
             //deplacer le fichier dans le repertoire
             $uploaded = move_uploaded_file($tmpName, $dirname . $imgName);
             if (!$uploaded) die("FILE NOT UPLOADED");
         } else echo "NO IMAGE !!!!";
+
 
         $query = 'INSERT INTO recette(titre, description, image) VALUES (:title, :description, :image)';
         $params = [
