@@ -1,56 +1,44 @@
 <?php
+
 $logged = isset($_SESSION['nickname']) ;
 ?>
 
 <header>
     <nav>
         <div id="menu">
-            <div><a href=""><h1 id="logo" class="elm-menu"><span id="isa">ISA</span>-Recettes</h1></a>
+            <div><a href="page_principale.php"><h1 id="logo" class="elm-menu"><span id="isa">ISA</span>-Recettes</h1></a>
 
             </div>
             <div>
                 <ul>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Acceuil
+                            Contact
                         </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        <ul class="dropdown-menu" id="contacter">
+                            <li><a href="mail:isa-office@gmail.com" id="m"><i class="bi bi-envelope"></i> isa-office@gmail.com</a></li>
+                            <li><a href="tel:(07)668888339" id="t"><i class="bi bi-telephone"></i> (07) 66 88 33 99</a></li>
                         </ul>
                     </li>
 
 
 
 
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Nos recettes
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
-                        </ul>
-                    </li>
-
-                    <?php if($logged):?>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Opérations
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="recettes.php">Afficher tous</a></li>
+                            <li><a class="dropdown-item" href="ajouter.php">Ajouter une recette</a></li>
                         </ul>
                     </li>
-                    <?php endif; ?>
 
 
                 </ul>
             </div>
 
-            <?php if($logged):?>//a ajouter
+            <?php if($logged):?>
                 <a class="btn " role="button" href="logout.php">
                     <div>
                         <input type="button" value="déconnexion" id="btn">
