@@ -360,8 +360,18 @@ function addIngredient() {
   <input type="text" name="ingredients[${i}][quantity]" placeholder="Quantité">
 </div>
 <div class="ingredient-input">
-  <input type="text" name="ingredients[${i}][name]" placeholder="Nom de l'ingrédient">
-</div>
+                                <input list="list-ingredient" name="ingredients[${i}][name]">
+                                <datalist id="list-ingredient">
+                                    <?php
+                $ingredient = new \\gdb\\ingredient();
+                $ingredients = $ingredient->generer_auto();
+
+                foreach ($ingredients as $ingr) {
+                    echo '<option value="' . $ingr->nom . '">';
+                }
+                ?>
+                                </datalist>
+                            </div>
 <div class="ingredient-image">
   <input type="file" name="ingredients[${i}][image]" accept="image/*">
 </div>
@@ -422,11 +432,14 @@ addButton0.addEventListener('click', () => {
   // Création d'une datalist pour le nouveau tag input
   const dataListHTML = `
     <datalist id="tag-list-${tags.length}">
-      <option value="Sel"></option>
-      <option value="Poivre"></option>
-      <option value="Sucre"></option>
-      <option value="Farine"></option>
-    </datalist>
+                        <?php
+                        $tag = new \\gdb\\tag();
+                        $tags = $tag->generer_auto();
+                        foreach ($tags as $t) {
+                            echo '<option value="' . $t->nom . '">';
+                        }
+                        ?>
+                    </datalist>
   `;
 
   // Ajout du nouvel élément d'entrée de balise au conteneur
