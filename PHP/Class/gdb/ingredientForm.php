@@ -6,6 +6,7 @@ class ingredientForm
 {
     private $gdb;
 
+
     public function generateForm()
     { ?>
         <div class="title">NEW GAME</div>
