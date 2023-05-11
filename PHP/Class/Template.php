@@ -25,6 +25,7 @@ class Template
             <link rel="stylesheet" href="/../Projet_recettes/CSS/login.css">
             <link rel="stylesheet" href="/../Projet_recettes/CSS/afficher.css">
             <link rel="stylesheet" href="/../Projet_recettes/CSS/ajouter.css">
+            <link rel="stylesheet" href="/../Projet_recettes/CSS/afficherdetails.css">
         </head>
         <body>
         <?php include "header.php" ?>
