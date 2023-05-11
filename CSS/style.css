@@ -86,7 +86,7 @@ li:hover{
 
 /************************SECTION*********************************/
 
-section{
+#pageprincipal{
     height: 750px;
     background-image:  url(/Projet_recettes/IMG/bck6.jpg);
     background-position: bottom;
