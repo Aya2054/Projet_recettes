@@ -25,7 +25,7 @@ class tag extends PdoWrapper
     public function generer_auto()
     {
         return $this->exec(
-            "SELECT * FROM tag ORDER BY titre",
+            "SELECT * FROM tag ORDER BY nom",
             null,
             'gdb\tagRenderer');
     }
