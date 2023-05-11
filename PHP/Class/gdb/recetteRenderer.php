@@ -4,6 +4,26 @@ namespace gdb;
 
 class recetteRenderer
 {
+
+    private $id_recette;
+
+    /**
+     * @return mixed
+     */
+    public function getIdRecette()
+    {
+        return $this->id_recette;
+    }
+
+    /**
+     * @param mixed $id_recette
+     */
+    public function setIdRecette($id_recette): void
+    {
+        $this->id_recette = $id_recette;
+    }
+
+
     public function getHTML()
     { ?>
         <div class="recipe">
@@ -15,7 +35,7 @@ class recetteRenderer
                 <?php endif; ?>
             <p><?= $this->description ?></p>
         </div>
-            <a href="#">Voir la recette</a>
+            <a href="Details.php?id=<?php echo $this->id_recette; ?>">Voir la recette</a>
 
             </div>
     <?php }
