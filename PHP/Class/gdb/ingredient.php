@@ -8,9 +8,13 @@ include __DIR__ . "../../../Config/DB_config.php";
 
 class ingredient extends PdoWrapper
 {
-    public const UPLOAD_DIR = "uploads_ingredient/";
+    public const UPLOAD_DIR = "uploads/ingredients/";
+    private $nom;
+    private $quantite;
+    private $unite;
+    private $image;
 
-    public function __construct()
+    public function __construct($nom=null, $quantite=null, $unite=null, $image=null)
     {
         // appel au constructeur de la classe mère
         parent::__construct(
@@ -19,7 +23,13 @@ class ingredient extends PdoWrapper
             $GLOBALS['db_port'],
             $GLOBALS['db_user'],
             $GLOBALS['db_pwd']);
+
+        $this->nom=$nom;
+        $this->quantite=$quantite;
+        $this->unite=$unite;
+        $this->image=$image;
     }
+
 
     //la fonction qui permet de generer automatiquement les ingredients
     public function generer_auto()
@@ -30,12 +40,21 @@ class ingredient extends PdoWrapper
             'gdb\ingrRenderer');
     }
 
+    //la fonction qui permet de retourner id d'un ingredient à partir de son nom
+    public function getIngredientByName($nom) {
+        return $this->exec("SELECT id_ingredient FROM ingredient WHERE nom = '".$nom."'",
+            null);
+
+    }
+
 
     //la fonction qui permet d'ajouter un nouveau ingredient
-    public function create_ingredient($nom, $imgFile = null)
+    public function create_ingredient($nom,$quantite, $merure, $imgFile = null)
     {
 
         $nom = htmlspecialchars($nom);
+        $quantite= htmlspecialchars($quantite);
+        $merure= htmlspecialchars($merure);
 
         $imgName = null;
         // enregistrement du fichier uploadé
@@ -50,10 +69,13 @@ class ingredient extends PdoWrapper
             if (!$uploaded) die("FILE NOT UPLOADED");
         } else echo "NO IMAGE !!!!";
 
-        $query = 'INSERT INTO ingredients(nom, image) VALUES (:nom, :image)';
+        $query = 'INSERT INTO ingredients(nom, quantite, mesure, image) VALUES (:nom, :quantite ,:mesure, :image)';
         $params = [
             'nom' => htmlspecialchars($nom),
+            'quantite' => htmlspecialchars($quantite),
+            'mesure' => htmlspecialchars($merure),
             'image' => $imgName
+
         ];
         return $this->exec($query, $params);
     }
