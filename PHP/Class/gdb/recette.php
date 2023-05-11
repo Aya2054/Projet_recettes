@@ -30,6 +30,15 @@ class recette extends PdoWrapper
             'gdb\recetteRenderer');
     }
 
+    //la fonction qui permet d'afficher tous les unites
+    public function unites()
+    {
+        return $this->exec(
+            "SELECT * FROM recette_ingredient ORDER BY unite",
+            null,
+            'gdb\recetteForm');
+    }
+
     //la fonction qui permet de recuperer une recette
     public function getRecetteById($id) {
         return $this->exec("SELECT * FROM recette WHERE id_recette = '".$id."'",
@@ -40,7 +49,7 @@ class recette extends PdoWrapper
 
     //la fonction qui permet d'afficher toutes les recettes qui contient les criteres donner par l'utilisateur
     //title, list_ingredients, tag
-    public function genere_recherche($title = null, $list_ingredient = null, $tag = null)
+    public function genere_recherche($title = null, $ingredient = null, $tag = null)
     {
 
         return $this->exec("SELECT DISTINCT p.* FROM recette p
@@ -48,7 +57,7 @@ class recette extends PdoWrapper
     INNER JOIN listes i on pi.id_listes=i.id_ingredients 
     INNER JOIN plats_tag pt on p.id_recette=pt.id_tag
     INNER JOIN tags t on pt.id_tag=t.id_tag
-    WHERE p.titre LIKE '$title' OR i.nom IN ' $list_ingredient' OR t.nom Like '$tag'",
+    WHERE p.titre LIKE '$title' OR i.nom IN ' $ingredient' OR t.nom Like '$tag'",
             null, 'gdb\recetteRenderer');
     }
 
@@ -167,13 +176,14 @@ class recette extends PdoWrapper
 
                 $this->exec($query, $params);
             }
-            // Ajouter la relation entre la recette et l'ingrédient dans la table "recette_ingredient"
+            // Ajouter la relation entre la recette et le tag dans la table "recette_ingredient"
             $query = 'INSERT INTO recette_tag (id_recette, id_tag) VALUES (:id_recette, (SELECT id FROM tag WHERE nom = :nom))';
 
 
             $params = [
                 'id_recette' => htmlspecialchars($id_recette),
-                'nom' => htmlspecialchars($tag)
+                'nom' => htmlspecialchars($tag),
+
             ];
 
             $this->exec($query, $params);
