@@ -479,4 +479,38 @@ function createOption(value) {
 
 // Mettre à jour l'affichage des tags au chargement de la page
 updateTags();
+    
+    
+    
+    
+    
+    
+    
+    
+    
+const ingredientNameInput = document.querySelector('input[name="ingredients[0][name]"]');
+const ingredientImageInput = document.querySelector('#image-ing');
+
+// Ajout d'un écouteur d'événement pour la saisie de l'ingrédient
+ingredientNameInput.addEventListener('input', () => {
+  // Récupération de la datalist
+  const dataList = document.querySelector(`datalist[id="ingredient-list"]`);
+  
+  // Parcours de la liste d'options de la datalist
+  for (let i = 0; i < dataList.options.length; i++) {
+    // Vérification si l'option correspond à l'ingrédient saisi
+    if (dataList.options[i].value === ingredientNameInput.value) {
+      // Masquage de l'image de l'ingrédient
+      ingredientImageInput.style.display = 'none';
+      return;
+    }
+  }
+  
+  // Affichage de l'image de l'ingrédient
+  ingredientImageInput.style.display = 'block';
+});
+
+    
+    
+    
 </script>
