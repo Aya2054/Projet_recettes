@@ -14,7 +14,7 @@ Autoloader::register();
     <h1>Hi <?php echo $_SESSION['nickname'] ?>, </h1>
 <?php endif; ?>
 
-<section>
+<section id="pageprincipal">
     <div class="centre">
         <h2>Bienvenue chez <span id="isa-total">ISA-Recettes</span></h2>
         <p>Découvrez des recettes simples et savoureuses sur notre site. Trouvez votre inspiration culinaire dès maintenant et ajoutez une touche de saveur à votre vie quotidienne.</p>
