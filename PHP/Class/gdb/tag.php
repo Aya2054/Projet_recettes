@@ -7,8 +7,9 @@ use pdo_wrapper\pdoWrapper;
 class tag extends PdoWrapper
 {
     public const UPLOAD_DIR = "uploads/";
+    private $nom;
 
-    public function __construct()
+    public function __construct($nom=null)
     {
         // appel au constructeur de la classe mère
         parent::__construct(
@@ -17,6 +18,8 @@ class tag extends PdoWrapper
             $GLOBALS['db_port'],
             $GLOBALS['db_user'],
             $GLOBALS['db_pwd']);
+
+        $this->nom=$nom;
     }
 
     public function generer_auto()
