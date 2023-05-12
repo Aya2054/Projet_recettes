@@ -27,10 +27,11 @@ class recetteRenderer
     public function getHTML()
     { ?>
         <div class="recipe">
-            <a href="editer.php?id=<?php echo $this->id_recette; ?>" class="m-2">
-                <i class="fa fa-edit fa-2x"></i>
-            </a>
             <h3><?= $this->titre ?></h3>
+            <div class="mes-items">
+                <a href="editer.php?id=<?php echo $this->id_recette; ?>"><i class="bi bi-pen" id="pen"></i></a>
+                <a href="supp.php?id=<?php echo $this->id_recette; ?>"><i class="bi bi-trash" id="trash"></i></a>
+            </div>
         <div class="recipe-details">
                 <?php if ($this->image != null) : ?>
                     <img src="/Projet_recettes/PHP/uploads/recettes/<?= $this->image ?>" alt="Description de l'image">
