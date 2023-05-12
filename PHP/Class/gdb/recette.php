@@ -41,9 +41,11 @@ class recette extends PdoWrapper
 
     //la fonction qui permet de recuperer une recette
     public function getRecetteById($id) {
-        return $this->exec("SELECT * FROM recette WHERE id_recette = '".$id."'",
+        $resultats= $this->exec("SELECT * FROM recette WHERE id_recette = '".$id."'",
                            null,
                             'gdb\recetteDetails');
+        $recette=$resultats[0];
+        return $recette;
 
     }
 
@@ -72,21 +74,16 @@ class recette extends PdoWrapper
         $imgName = null;
         // enregistrement du fichier uploadé
         if ($imgFile != null) {
-            //recuperer le nom temporaire du fichier
+
             $tmpName = $imgFile['tmp_name'];
             //recuperer le nom d'origine
             $imgName = $imgFile['name'];
-            //encoder le nom du fichier pour le proteger des caracteres speciaux
             $imgName = urlencode(htmlspecialchars($imgName));
-
-            //preparer le repertoire qui doit contenir le fichier
             $dirname = $GLOBALS['PHP_DIR'] . self::UPLOAD_DIR;
-            //si le repertoire n'est pas encore cree on doit le creer
-            var_dump($dirname);
+
             if (!is_dir($dirname)) mkdir($dirname);
-            //deplacer le fichier dans le repertoire
             $uploaded = move_uploaded_file($tmpName, $dirname . $imgName);
-            if (!$uploaded) die("FILE NOT UPLOADED");
+            if (!$uploaded) die("FILE B22 nicolas NOT UPLOADED");
         } else echo "NO IMAGE !!!!";
 
 
@@ -97,7 +94,8 @@ class recette extends PdoWrapper
             'image' => $imgName
         ];
 
-        if(!empty($ingredients) || !empty($tags)){
+
+        if(!empty($ingredients)){
             //recuperer l id de la recette q'on veut creer
             $id_recette = $this->exec(
                 "SELECT id_recette FROM recette WHERE TITRE ='$titre'",
@@ -107,10 +105,11 @@ class recette extends PdoWrapper
                 //pour affecter les ingredients à cette recette
                 $this->recette_ingredients($id_recette, $ingredients);
             }
+            /*
             if(!empty($tags)) {
                 //affecter les tags à cette recette
                 $this->recette_tags($id_recette, $tags);
-            }
+            }*/
         }
 
 
@@ -123,8 +122,8 @@ class recette extends PdoWrapper
 
         foreach ($ingredients as $ingredient) {
             // Vérifier si l'ingrédient existe déjà dans la base de données
-            $query = 'SELECT id FROM ingredients WHERE nom = :nom';
-            $params = ['nom' => htmlspecialchars($ingredient['nom'])];
+            $query = 'SELECT id_ingredient FROM ingredients WHERE nom = :nom';
+            $params = ['nom' => htmlspecialchars($ingredient->getNom())];
             $result = $this->exec($query, $params);
 
             if (empty($result)) {
@@ -139,21 +138,35 @@ class recette extends PdoWrapper
                 $this->exec($query, $params);
 
                 // Déplacement du fichier image vers le répertoire de destination
-                $tmpName = $ingredient['image'];
-                $dirname = $GLOBALS['PHP_DIR'] . self::UPLOAD_DIR;
-                if (!is_dir($dirname)) mkdir($dirname);
-                $uploaded = rename($tmpName, $dirname . $imgName);
-                if (!$uploaded) die("FILE NOT UPLOADED");
+                $titre = htmlspecialchars($ingredient->getNom());
+                $description = htmlspecialchars($description);
+
+                $imgName = null;
+                // enregistrement du fichier uploadé
+                if ($ingredient->getImage != null) {
+
+                    $tmpName = $ingredient->getImage['tmp_name'];
+                    //recuperer le nom d'origine
+                    $imgName = $ingredient->getImage['name'];
+                    $imgName = urlencode(htmlspecialchars($imgName));
+                    $dirname = $GLOBALS['PHP_DIR'] . self::UPLOAD_DIR;
+
+                    if (!is_dir($dirname)) mkdir($dirname);
+                    $uploaded = move_uploaded_file($tmpName, $dirname . $imgName);
+                    if (!$uploaded) die("FILE B22 nicolas NOT UPLOADED");
+                } else echo "NO IMAGE !!!!";
+                // Ajouter la relation entre la recette et l'ingrédient dans la table "recette_ingredient"
+                $query = 'INSERT INTO recette_ingredient (id_recette, id_ingredient,quantite, unite, image) VALUES (:id_recette, (SELECT id_ingredient FROM ingredients WHERE nom = :nom), :quantite, :unite, :image)';
+                $params = [
+                    'id_recette' => $id_recette,
+                    'quantite' => htmlspecialchars($ingredient->getQuantite()),
+                    'unite' => htmlspecialchars($ingredient->getUnite()),
+                    'nom' => htmlspecialchars($ingredient->getNom()),
+                    'image' =>$imgName
+                ];
             }
 
-            // Ajouter la relation entre la recette et l'ingrédient dans la table "recette_ingredient"
-            $query = 'INSERT INTO recette_ingredient (id_recette, id_ingredient,quantite, unite) VALUES (:id_recette, (SELECT id FROM ingredients WHERE nom = :nom), :quantite, :unite )';
-            $params = [
-                'id_recette' => htmlspecialchars($id_recette),
-                'quantite' => htmlspecialchars($ingredient['quantite']),
-                'unite' => htmlspecialchars($ingredient['unite']),
-                'nom' => htmlspecialchars($ingredient['nom'])
-            ];
+
 
             $this->exec($query, $params);
         }
@@ -165,7 +178,7 @@ class recette extends PdoWrapper
 
         foreach ($tags as $tag) {
             // Vérifier si l'ingrédient existe déjà dans la base de données
-            $query = 'SELECT id FROM tag WHERE nom = :nom';
+            $query = 'SELECT id_tag FROM tag WHERE nom = :nom';
             $params = ['nom' => htmlspecialchars($tag)];
             $result = $this->exec($query, $params);
 
@@ -177,13 +190,12 @@ class recette extends PdoWrapper
                 $this->exec($query, $params);
             }
             // Ajouter la relation entre la recette et le tag dans la table "recette_ingredient"
-            $query = 'INSERT INTO recette_tag (id_recette, id_tag) VALUES (:id_recette, (SELECT id FROM tag WHERE nom = :nom))';
+            $query = 'INSERT INTO recette_tag (id_recette, id_tag) VALUES (:id_recette, (SELECT id_tag FROM tag WHERE nom = :nom))';
 
 
             $params = [
                 'id_recette' => htmlspecialchars($id_recette),
-                'nom' => htmlspecialchars($tag),
-
+                'nom' => htmlspecialchars($tag)
             ];
 
             $this->exec($query, $params);
