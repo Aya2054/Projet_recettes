@@ -234,3 +234,96 @@ public function generateForm()
 
 
 </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="divIngredients" class="mt20 repeator-ingredients">
+    <div class="row repeator-item">
+        <div class="large-2 medium-2 small-6 columns">
+            <label>Quantité</label>
+            <input type="text" name="quantite" value="" />
+        </div>
+        <div class="large-3 medium-3 small-6 columns">
+            <label>Mesures</label>
+            <select class="auto-mesure" name="mesure[0]">
+                <option value="">(Rien)</option>
+                <?php
+                $unite = new \gdb\recette();
+                $unites = $unite->unites();
+                foreach ($unites as $unite) {
+                    echo '<option value="' . $unite->id . '">' . $unite->unite . '</option>';
+                }
+                ?>
+            </select>
+        </div>
+        <div class="large-6 medium-6 small-10 columns">
+            <label for="ingredient1">Ingrédient :</label>
+            <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" id="ingredient1" name="ingredient1">
+                <option selected>Choisir un ingredient</option>
+                <?php
+                $ingredient = new \gdb\ingredient();
+                $ingredients = $ingredient->generer_auto();
+                foreach ($ingredients as $ingr) {
+                    echo '<option value="' . $ingr->id . '">' . $ingr->nom . '</option>';
+                }
+                ?>
+            </select>
+        </div>
+
+        <div class="columns">
+            <div class="pb15 row norepeat">
+                <div class="large-2 medium-2 small-6 columns">
+                    <span class="help-text">ex: 120</span>
+                </div>
+                <div class="large-3 medium-3 small-6 columns">
+                    <span class="help-text">grammes (gr)</span>
+                </div>
+                <div class="large-7 medium-7 small-10 columns">
+                    <span class="help-text">de farine</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="large-1 medium-1 small-2 columns">
+            <a href="#" class="button bg-light-gray small icon-cross circle delete repeator-delete"></a>
+        </div>
+    </div>
+    <button type="button" class="btn btn-primary">Modifier l'un ingredient</button>
+</div>
+
+
+
+<label for="tags">Tags :</label>
+<input type="text" id="tags" name="tags" required>
