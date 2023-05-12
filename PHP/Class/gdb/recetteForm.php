@@ -301,6 +301,22 @@ class recetteForm
 
             // Mettre à jour l'affichage des tags au chargement de la page
             updateTags();
+
+            const ingredientInput = document.querySelector('input[name="ingredients[0][name]"]');
+            const ingredientList = document.querySelector('#ingredient-list');
+
+            ingredientInput.addEventListener('input', () => {
+                const ingredientName = ingredientInput.value;
+                const options = ingredientList.querySelectorAll('option');
+                const matchingOption = Array.from(options).find(option => option.value === ingredientName);
+                const ingredientImage = document.querySelector('.ingredient-image');
+
+                if (matchingOption) {
+                    ingredientImage.style.display = 'none';
+                } else {
+                    ingredientImage.style.display = 'block';
+                }
+            });
         </script>
         <?php
     }
