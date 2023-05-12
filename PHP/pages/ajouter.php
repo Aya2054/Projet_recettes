@@ -10,13 +10,14 @@ $gf = new \gdb\recetteForm();
 <!-- Démarre le buffering -->
 <?php ob_start() ?>
 
+<?php var_dump($_POST);?>
+
 <?php
 if (empty($_POST['title'])) {
     $gf->generateForm();
 } else {
     //recuperer l'image de la recette
     $imgFile = isset($_FILES['image']) ? $_FILES['image'] : null;
-
     //recupérer les ingredients
     if($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Récupérer les données des ingrédients depuis le formulaire
@@ -50,7 +51,7 @@ if (empty($_POST['title'])) {
         }
 
         if ($imgFile != null) {
-            $gf->createRecette($_POST['title'], $_POST['description'], $imgFile, $ingredients, $tags);
+            $gf->createRecette($_POST['title'], $_POST['description'],$imgFile,$ingredients);
         } else {
             echo "img vide";
         }
