@@ -3,11 +3,14 @@
 namespace gdb;
 
 use gdb\recette;
+use gdb\Test;
 
 
 class recetteForm
 {
     private $gdb;
+    private $test;
+
     private $id_recette;
 
     /**
@@ -83,7 +86,7 @@ class recetteForm
                             </div>
 
                             <div class="ingredient-image">
-                                <input type="file" id="image-ing" name="ingredients[0][image]" accept="image/*" required>
+                                <input type="file" id="image-ing" name="ingredients[0][image]" accept="image/*">
                             </div>
                         </div>
 
@@ -97,7 +100,7 @@ class recetteForm
                 </div>
 
                 <div class="tag-container">
-                    <input list="list-tag" id="tags" name="tags">
+                    <input list="list-tag" id="tags" name="tags[]">
 
                     <datalist id="list-tag">
                         <?php
@@ -162,7 +165,7 @@ class recetteForm
             const addButton = document.querySelector('.ingredient-add');
             const removeButton = document.querySelector('.ingredient-remove');
             const container = document.querySelector('.ingredient-container');
-            let i = 0;
+            let i = 1;
 
             // Fonction qui ajoute une nouvelle ligne d'ingrédient
             function addIngredient() {
@@ -172,10 +175,10 @@ class recetteForm
                 ingredientInput.innerHTML = `
 <div class="ingredient-input">
   <select name="ingredients[${i}][unit]">
-    <option value="g">g</option>
-    <option value="ml">ml</option>
-    <option value="kg">kg</option>
-    <option value="l">l</option>
+    <option value="g">grammes (g)</option>
+                                    <option value="ml">kilogrammes (kg)</option>
+                                    <option value="ml">litres (l)</option>
+                                    <option value="ml">millilitres (ml)</option>
   </select>
 </div>
 <div class="ingredient-input">
@@ -247,7 +250,7 @@ class recetteForm
                 // Ajout d'un nouvel élément de saisie de tag au tableau
                 const newTagInput = document.createElement('input');
                 newTagInput.type = 'text';
-                newTagInput.name = 'tags';
+                newTagInput.name = 'tags[]';
                 newTagInput.required = true;
                 newTagInput.setAttribute('list', `tag-list-${tags.length}`);
 
@@ -302,113 +305,195 @@ class recetteForm
             // Mettre à jour l'affichage des tags au chargement de la page
             updateTags();
 
-            const ingredientInput = document.querySelector('input[name="ingredients[0][name]"]');
-            const ingredientList = document.querySelector('#ingredient-list');
+            const ingredientNameInput = document.querySelector('input[name="ingredients[0][name]"]');
+            const ingredientImageDiv = document.querySelector('.ingredient-image');
 
-            ingredientInput.addEventListener('input', () => {
-                const ingredientName = ingredientInput.value;
-                const options = ingredientList.querySelectorAll('option');
-                const matchingOption = Array.from(options).find(option => option.value === ingredientName);
-                const ingredientImage = document.querySelector('.ingredient-image');
+            ingredientNameInput.addEventListener('change', () => {
+                const listIngredient = document.querySelector('#list-ingredient');
+                const options = listIngredient.querySelectorAll('option');
 
-                if (matchingOption) {
-                    ingredientImage.style.display = 'none';
+                let ingredientExists = false;
+                options.forEach((option) => {
+                    if (option.value.toLowerCase() === ingredientNameInput.value.toLowerCase()) {
+                        ingredientExists = true;
+                    }
+                });
+
+                if (ingredientExists) {
+                    ingredientImageDiv.style.display = 'none';
                 } else {
-                    ingredientImage.style.display = 'block';
+                    ingredientImageDiv.style.display = 'block';
                 }
             });
+
         </script>
         <?php
     }
+    private $titre, $description, $image;
 
-    public function generateEditForm()
-    { ?>
+    /**
+     * @return mixed
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * @param mixed $description
+     */
+    public function setDescription($description): void
+    {
+        $this->description = $description;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    /**
+     * @param mixed $image
+     */
+    public function setImage($image): void
+    {
+        $this->image = $image;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTitre()
+    {
+        return $this->titre;
+    }
+
+    /**
+     * @param mixed $titre
+     */
+    public function setTitre($titre): void
+    {
+        $this->titre = $titre;
+    }
+
+
+
+    public function generateEditForm($id){
+        $rec = new \gdb\recette();
+        $recette=$rec->getRecetteById($id);
+        $this->titre = $recette->titre;
+        $this->description= $recette->description;
+        $this->image= $recette->image;
+        if (!$recette) {
+            echo "n'existe pas";
+            return;
+        }
+        ?>
 <section id="form-ajouter">
     <h1>Editer la recette</h1>
     <form method="POST" enctype="multipart/form-data">
         <label for="title">Titre :</label>
-        <input type="text" id="title" name="title" value=<?=$this->titre?> required>
+        <input type="text" id="title" name="title" value="<?=$this->titre?>" required>
 
         <label for="description">Description :</label>
-        <textarea id="description" name="description" value=<?=$this->descritption?> required></textarea>
+        <textarea id="description" name="description" value="<?=$this->description?>" required></textarea>
 
         <label for="image">Image :</label>
         <input type="file" id="image-input" name="image" accept="image/*" required>
         <div id="preview-container">
             <img id="preview-image" src="/Projet_recettes/PHP/uploads/recettes/<?= $this->image ?>">
         </div>
+        <div>
+            <div>
+                <div class="ingredient-title">
+                    <label for="ingredients">Ingrédients :</label>
+                    <div class="ingredient-buttons">
+                        <button class="ingredient-add" type="button">+</button>
+                        <button class="ingredient-remove" type="button">-</button>
+                    </div>
+                </div>
+                <div class="ingredient-container">
+                    <div class="ingredient-input">
+                        <select name="ingredients[0][unit]">
+                            <option value="g">grammes (g)</option>
+                            <option value="ml">kilogrammes (kg)</option>
+                            <option value="ml">litres (l)</option>
+                            <option value="ml">millilitres (ml)</option>
+                        </select>
+                    </div>
+                    <div class="ingredient-input">
+                        <input type="text" name="ingredients[0][quantity]" placeholder="Quantité">
+                    </div>
+                    <div class="ingredient-input">
+                        <input list="list-ingredient" name="ingredients[0][name]">
+                        <datalist id="list-ingredient">
+                            <?php
+                            $ingredient = new \gdb\ingredient();
+                            $ingredients = $ingredient->generer_auto();
 
-        <div id="divIngredients" class="mt20 repeator-ingredients">
-            <div class="row repeator-item">
-                <div class="large-2 medium-2 small-6 columns">
-                    <label>Quantité</label>
-                    <input type="text" name="quantite" value="" />
-                </div>
-                <div class="large-3 medium-3 small-6 columns">
-                    <label>Mesures</label>
-                    <select class="auto-mesure" name="mesure[0]">
-                        <option value="">(Rien)</option>
-                        <?php
-                        $unite = new \gdb\recette();
-                        $unites = $unite->unites();
-                        foreach ($unites as $unite) {
-                            echo '<option value="' . $unite->id . '">' . $unite->unite . '</option>';
-                        }
-                        ?>
-                    </select>
-                </div>
-                <div class="large-6 medium-6 small-10 columns">
-                    <label for="ingredient1">Ingrédient :</label>
-                    <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" id="ingredient1" name="ingredient1">
-                        <option selected>Choisir un ingredient</option>
-                        <?php
-                        $ingredient = new \gdb\ingredient();
-                        $ingredients = $ingredient->generer_auto();
-                        foreach ($ingredients as $ingr) {
-                            echo '<option value="' . $ingr->id . '">' . $ingr->nom . '</option>';
-                        }
-                        ?>
-                    </select>
-                </div>
+                            foreach ($ingredients as $ingr) {
+                                echo '<option value="' . $ingr->nom . '">';
+                            }
+                            ?>
+                        </datalist>
+                    </div>
 
-                <div class="columns">
-                    <div class="pb15 row norepeat">
-                        <div class="large-2 medium-2 small-6 columns">
-                            <span class="help-text">ex: 120</span>
-                        </div>
-                        <div class="large-3 medium-3 small-6 columns">
-                            <span class="help-text">grammes (gr)</span>
-                        </div>
-                        <div class="large-7 medium-7 small-10 columns">
-                            <span class="help-text">de farine</span>
-                        </div>
+                    <div class="ingredient-image">
+                        <input type="file" id="image-ing" name="ingredients[0][image]" accept="image/*">
                     </div>
                 </div>
 
-                <div class="large-1 medium-1 small-2 columns">
-                    <a href="#" class="button bg-light-gray small icon-cross circle delete repeator-delete"></a>
-                </div>
             </div>
-            <button type="button" class="btn btn-primary">Modifier l'un ingredient</button>
-
         </div>
 
 
-        <label for="tags">Tags :</label>
-        <input type="text" id="tags" name="tags" required>
+        <div class="ingredient-buttons">
+            <label for="tags">Tags :</label>
+            <button class="tag-add ingredient-add" type="button">+</button>
+            <button class="tag-remove ingredient-remove" type="button">-</button>
+        </div>
+
+        <div class="tag-container">
+            <input list="list-tag" id="tags" name="tags">
+
+            <datalist id="list-tag">
+                <?php
+                $tag = new \gdb\tag();
+                $tags = $tag->generer_auto();
+                foreach ($tags as $t) {
+                    echo '<option value="' . $t->nom . '">';
+                }
+                ?>
+            </datalist>
+        </div>
+        <br>
+
+        <div></div>
+        <br>
 
         <input type="submit" value="Ajouter">
     </form>
 </section>
 <?php }
 
+
     public function createRecette($titre, $description = null, $imgFile = null, $ingredients = null, $tag=null)
     {
-        if ($this->gdb == null) $this->gdb = new recette();
+        if ($this->gdb == null) $this->gdb = new \gdb\recette();
         $this->gdb->create_recette($titre, $description, $imgFile, $ingredients,$tag);
-        header('location: recettes.php');
-        exit();
+        //header('location: recettes.php');
+        //exit();
     }
+
+    /*public function test($titre, $description = null, $imgFile = null){
+        if ($this->test == null) $this->test = new Test();
+        $this->test->create_recette($titre, $description, $imgFile);
+        echo "reussi";
+    }*/
+
 
     public function editRecette($id, $titre, $description = null, $imgFile = null, $ingredients = null, $tag=null)
     {
@@ -421,6 +506,7 @@ class recetteForm
     public function deleteRecette($id)
     {
 
+        if ($this->gdb == null) $this->gdb = new recette();
         $this->gdb->delete_recette($id);
         header('location: recettes.php');
         exit();
