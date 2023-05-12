@@ -14,6 +14,70 @@ class ingredient extends PdoWrapper
     private $unite;
     private $image;
 
+    /**
+     * @return mixed|null
+     */
+    public function getNom(): mixed
+    {
+        return $this->nom;
+    }
+
+    /**
+     * @param mixed|null $nom
+     */
+    public function setNom(mixed $nom): void
+    {
+        $this->nom = $nom;
+    }
+
+    /**
+     * @return mixed|null
+     */
+    public function getQuantite(): mixed
+    {
+        return $this->quantite;
+    }
+
+    /**
+     * @param mixed|null $quantite
+     */
+    public function setQuantite(mixed $quantite): void
+    {
+        $this->quantite = $quantite;
+    }
+
+    /**
+     * @return mixed|null
+     */
+    public function getUnite(): mixed
+    {
+        return $this->unite;
+    }
+
+    /**
+     * @param mixed|null $unite
+     */
+    public function setUnite(mixed $unite): void
+    {
+        $this->unite = $unite;
+    }
+
+    /**
+     * @return mixed|null
+     */
+    public function getImage(): mixed
+    {
+        return $this->image;
+    }
+
+    /**
+     * @param mixed|null $image
+     */
+    public function setImage(mixed $image): void
+    {
+        $this->image = $image;
+    }
+
     public function __construct($nom=null, $quantite=null, $unite=null, $image=null)
     {
         // appel au constructeur de la classe mère
