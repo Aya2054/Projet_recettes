@@ -11,7 +11,8 @@ $gf = new \gdb\recetteForm();
 <?php ob_start() ?>
 
 <?php
-$gf->generateEditForm();
+$id=$_GET['id'];
+$gf->generateEditForm($id);
 
 //recuperer l'image de la recette
 $imgFile = isset($_FILES['image']) ? $_FILES['image'] : null;
