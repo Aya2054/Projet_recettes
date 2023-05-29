@@ -280,7 +280,7 @@ public function generateForm()
             <select class="auto-mesure" name="mesure[0]">
                 <option value="">(Rien)</option>
                 <?php
-                $unite = new \gdb\recette();
+                $unite = new \gdb\Recette();
                 $unites = $unite->unites();
                 foreach ($unites as $unite) {
                     echo '<option value="' . $unite->id . '">' . $unite->unite . '</option>';

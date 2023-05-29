@@ -1,32 +1,65 @@
 <?php
 session_start() ;
-$logged = isset($_SESSION['nickname']) ;
-include "../Config/config.php";
+    $logged = isset($_SESSION['nickname']) ;
+    include "../Config/config.php";
 
-require ".." . DIRECTORY_SEPARATOR .'class'.DIRECTORY_SEPARATOR.'Autoloader.php' ;
-Autoloader::register();
-?>
+    require ".." . DIRECTORY_SEPARATOR .'class'.DIRECTORY_SEPARATOR.'Autoloader.php' ;
+    Autoloader::register();
+    use gdb\Recette;
+    $gdb = new Recette();
+    $rech = new \gdb\Recherche();
 
-<!-- Démarre le buffering -->
-<?php ob_start() ?>
 
-<?php if($logged): ?>
-    <h1>Hi <?php echo $_SESSION['nickname'] ?>, </h1>
-<?php endif; ?>
+    ?>
 
-<section id="pageprincipal">
-    <div class="centre">
-        <h2>Bienvenue chez <span id="isa-total">ISA-Recettes</span></h2>
-        <p>Découvrez des recettes simples et savoureuses sur notre site. Trouvez votre inspiration culinaire dès maintenant et ajoutez une touche de saveur à votre vie quotidienne.</p>
-        <form class="form-inline">
-            <div class="input-group">
-        <input type="text"style="border-radius: 10px; border:none; margin-top: 40px; width: 90%;padding:7px" placeholder="recettes, ingredients, tags......">
-            </div>
-        </form>
-    </div>
-</section>
+    <!-- Démarre le buffering -->
+    <?php ob_start() ?>
 
-    <!-- Récupère le contenu du buffer (et le vide) -->
-<?php $content=ob_get_clean() ?>
-    <!-- Utilisation du contenu bufferisé -->
-<?php Template::render($content) ?>
+
+
+    <?php
+    // cette fonction qui permet d'afficher le formulaire de recherche est definie dans la Classe Recherche
+    $rech->recherche();
+
+    $searchQuery= $_POST['search_query'];
+    $data = $gdb->getRecetteByName($searchQuery);
+    $data1=  $gdb->getRecetteByIgredient($searchQuery);
+    $data2=  $gdb->getRecetteByTag($searchQuery);
+
+            // Afficher les résultats
+            if (!empty($data)) {
+                // Parcourir les résultats de la recherche
+                foreach ($data as $recette) {
+                 $result = $gdb->getRecetteById1($recette->getIdRecette());
+                    foreach ( $result as $resul) {
+                        $resul->getHTML();
+                    }
+                }
+            }
+            elseif (!empty($data1)){
+                // Parcourir les résultats de la recherche
+                foreach ($data1 as $recette) {
+                    $result = $gdb->getRecetteById1($recette->getIdRecette());
+                    foreach ( $result as $resul) {
+                        $resul->getHTML();
+                    }
+                }
+            }
+            elseif (!empty($data2)){
+                // Parcourir les résultats de la recherche
+                foreach ($data2 as $recette) {
+                    $result = $gdb->getRecetteById1($recette->getIdRecette());
+                    foreach ( $result as $resul) {
+                        $resul->getHTML();
+                    }
+                }
+            }
+            else {
+                echo "Aucune recette trouvée.";
+            }
+            ?>
+
+        <!-- Récupère le contenu du buffer (et le vide) -->
+    <?php $content=ob_get_clean() ?>
+        <!-- Utilisation du contenu bufferisé -->
+    <?php Template::render($content) ?>

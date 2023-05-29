@@ -44,5 +44,16 @@ class tag extends PdoWrapper
 
         return $this->exec($query, $params);
     }
+    // Fonction pour récupérer les tags d'une recette à partir de la base de données
+    function getTagsForRecette($recetteId)
+    {
+        // Effectuer une requête SQL pour récupérer les tags associés à la recette
+        $query = "SELECT * FROM recette_tag WHERE id_recette = :recetteId";
+        $params = [
+            'recetteId' => htmlspecialchars($recetteId)
+        ];
+
+        return $this->exec($query, $params);
+    }
 
 }

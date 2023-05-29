@@ -76,7 +76,7 @@ class tagForm
 
     public function createTag($nom)
     {
-        if ($this->gdb == null) $this->gdb = new recette();
+        if ($this->gdb == null) $this->gdb = new Recette();
         $this->gdb->create_ingredient($nom);
         header('location: games_list.php');
         exit();

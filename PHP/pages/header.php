@@ -29,7 +29,7 @@ $logged = isset($_SESSION['nickname']) ;
                             Opérations
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="recettes.php">Afficher tous</a></li>
+                            <li><a class="dropdown-item" href="recettes.php">Afficher toutes</a></li>
                             <?php if($logged):?>
                             <li><a class="dropdown-item" href="ajouter.php">Ajouter une recette</a></li>
                             <?php endif; ?>

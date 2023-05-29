@@ -1,7 +1,7 @@
 <?php
 namespace login ;
 
-use gdb\recette;
+use gdb\Recette;
 
 class Logger
 {

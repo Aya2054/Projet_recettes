@@ -9,10 +9,10 @@ include __DIR__ . "../../../Config/DB_config.php";
 class ingredient extends PdoWrapper
 {
     public const UPLOAD_DIR = "uploads/ingredients/";
-    private $nom;
-    private $quantite;
-    private $unite;
-    private $image;
+    public $nom;
+    public $quantite;
+    public $unite;
+    public $image;
 
     /**
      * @return mixed|null
@@ -143,5 +143,18 @@ class ingredient extends PdoWrapper
         ];
         return $this->exec($query, $params);
     }
+
+    // Fonction pour récupérer les ingrédients d'une recette à partir de la base de données
+    function getIngredientsForRecette($recetteId)
+    {
+        // Effectuer une requête SQL pour récupérer les ingrédients associés à la recette
+        $query = "SELECT * FROM recette_ingredient WHERE id_recette = :recetteId";
+        $params = [
+            'recetteId' => htmlspecialchars($recetteId)
+
+        ];
+        return $this->exec($query, $params);
+    }
+
 
 }

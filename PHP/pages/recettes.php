@@ -3,7 +3,8 @@ require_once "../Config/config.php";
 
 require ".." . DIRECTORY_SEPARATOR . 'class' . DIRECTORY_SEPARATOR . 'Autoloader.php';
 Autoloader::register();
-$gdb = new \gdb\recette("isa_cuisine");
+$logged = isset($_SESSION['nickname']);
+$gdb = new \gdb\Recette($logged);
 $data = $gdb->generer_auto();
 
 ?>
@@ -12,7 +13,7 @@ $data = $gdb->generer_auto();
 <?php ob_start() ?>
 
 <div>Recettes</div>
-<h2>Résultats de recherche</h2>
+
 <div class="recipes-list">
     <?php foreach ($data as $d): ?>
         <?= $d->getHTML(); ?>

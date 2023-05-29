@@ -77,7 +77,7 @@ class ingredientForm
 
     public function createIngredient($nom, $imgFile = null)
     {
-        if ($this->gdb == null) $this->gdb = new recette();
+        if ($this->gdb == null) $this->gdb = new Recette();
         $this->gdb->create_ingredient($nom, $imgFile);
         header('location: games_list.php');
         exit();

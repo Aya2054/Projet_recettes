@@ -10,14 +10,18 @@ $gf = new \gdb\recetteForm();
 <!-- Démarre le buffering -->
 <?php ob_start() ?>
 
-<?php var_dump($_POST);?>
-
 <?php
+var_dump($_POST);
 if (empty($_POST['title'])) {
     $gf->generateForm();
 } else {
     //recuperer l'image de la recette
     $imgFile = isset($_FILES['image']) ? $_FILES['image'] : null;
+
+    // Récupérer les images des ingrédients
+    $imgFiles = isset($_FILES['ingredients']) ? $_FILES['ingredients'] : null;
+
+
     //recupérer les ingredients
     if($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Récupérer les données des ingrédients depuis le formulaire
@@ -26,15 +30,16 @@ if (empty($_POST['title'])) {
 
         // Tableau pour stocker les ingrédients
         $ingredients = array();
+
         $tags= array();
 
         // Parcourir chaque ingrédient
+        $i = 0;
         foreach ($ingredientData as $data) {
-            $i = 0;
             $name = $data['name'];
             $quantity = $data['quantity'];
             $unit = $data['unit'];
-            $image = isset($_FILES['ingredients[' . $i . '][image]']) ? $_FILES['ingredients[' . $i . '][image]'] : null;
+            $image = $imgFiles;
 
             // Créer une instance d'ingrédient et l'ajouter au tableau
             $ingredient = new \gdb\ingredient($name, $quantity, $unit, $image);
