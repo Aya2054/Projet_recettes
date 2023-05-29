@@ -7,21 +7,38 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 
 
 $recetteDb = new RecetteDb();
+$db = new RecetteDb();
+//$id = 5; // ID de la recette à rechercher
+$recettes  = $db ->rechercherRecette($searchQuery);
+
+// Afficher les résultats de la recherche
+/*foreach ($results as $result) {
+    echo "Titre : " . $result['titre'] . "<br>";
+    echo "Description : " . $result['description'] . "<br>";
+    // Afficher d'autres informations de la recette si nécessaire
+}*/
 
 
 
-$recettes = $recetteDb->genere_recherche($searchQuery, $searchQuery, $searchQuery);
+//$recettes = $recetteDb->genere_recherche($searchQuery, $searchQuery, $searchQuery);
 
 // Afficher les résultats
-foreach ($recettes as $recette) {
-    echo $recette['titre'] . '<br>';
-    echo $recette['description'] . '<br>';
-    echo '<img src="' . $recette['image'] . '" alt="' . $recette['titre'] . '"><br>';
-    echo 'Ingrédients : ' . $recette['list_ingredients'] . '<br>';
-    echo 'Tags : ' . $recette['tag'] . '<br><br>';
+if (!empty($recettes)) {
+    // Parcourir les résultats de la recherche
+    foreach ($recettes as $recette) {
+        echo $recette['titre'] . '<br>';
+        echo $recette['description'] . '<br>';
+        echo '<img src="' . $recette['image'] . '" alt="' . $recette['titre'] . '"><br>';
+        echo 'Ingrédients : ' . $recette['list_ingredients'] . '<br>';
+        echo 'Tags : ' . $recette['tag'] . '<br><br>';
+    }
+} else {
+    echo "Aucune recette trouvée.";
 }
 }
 }
+
+
 ?>
 
 <form method="GET" action="test.php">
@@ -61,5 +78,5 @@ foreach ($ingredients as $ingredient) {
 }
 // echo $recetteDb->generer_auto_tag();*/
 
-?>
+    
 
