@@ -7,7 +7,7 @@ use pdo_wrapper\pdoWrapper;
 class tag extends PdoWrapper
 {
     public const UPLOAD_DIR = "uploads/";
-    private $nom;
+    public $nom;
 
     public function __construct($nom=null)
     {

@@ -1,36 +1,6 @@
 
 
 
-// Récupération de l'élément input de type file
-const inputImage = document.getElementById("image");
-
-// Récupération de l'élément img qui affichera l'image sélectionnée
-const imgPreview = document.querySelector("#grand-image img");
-
-// Ajout d'un écouteur d'événement "change" sur l'élément input de type file
-inputImage.addEventListener("change", function () {
-
-    // Vérification que l'utilisateur a bien sélectionné un fichier
-    if (this.files && this.files[0]) {
-
-        // Création d'un objet FileReader pour lire le contenu du fichier sélectionné
-        const reader = new FileReader();
-
-        // Ajout d'un écouteur d'événement "load" sur l'objet FileReader
-        reader.addEventListener("load", function () {
-
-            // Attribution du résultat de la lecture du fichier à la source de l'élément img
-            imgPreview.src = this.result;
-        });
-
-        // Lecture du fichier sélectionné en tant que URL
-        reader.readAsDataURL(this.files[0]);
-    }
-});
-
-
-
-
 
 
 
@@ -106,17 +76,6 @@ addButton.addEventListener('click', addIngredient);
 removeButton.addEventListener('click', removeIngredient);
 
 
-
-
-
-
-
-
-
-
-
-
-
 // Récupération des éléments HTML pour la gestion des tags
 const addButton0 = document.querySelector('.tag-add');
 const removeButton0 = document.querySelector('.tag-remove');
@@ -133,17 +92,16 @@ addButton0.addEventListener('click', () => {
     newTagInput.setAttribute('list', `tag-list-${tags.length}`);
 
     // Création d'une datalist pour le nouveau tag input
-    const dataListHTML = `
-    <datalist id="tag-list-${tags.length}">
-                        <?php
-                $tag = new \gdb\tag();
-                $tags = $tag->generer_auto();
-                foreach ($tags as $t) {
-                    echo '<option value="' . $t->nom . '">';
-                }
-                ?>
-                    </datalist>
-  `;
+    const dataListHTML = `<datalist id="tag-list-${tags.length}">
+    <?php
+        $tag = new \gdb\tag();
+        $tags = $tag->generer_auto();
+        foreach ($tags as $t) {
+            echo "<option value="' . $t->nom . '">";
+        }
+    ?>
+</datalist>`;
+
 
     // Ajout du nouvel élément d'entrée de balise au conteneur
     tagContainer.innerHTML += newTagInput.outerHTML + dataListHTML;

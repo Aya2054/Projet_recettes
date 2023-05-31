@@ -11,7 +11,6 @@ $gf = new \gdb\recetteForm();
 <?php ob_start() ?>
 
 <?php
-var_dump($_POST);
 if (empty($_POST['title'])) {
     $gf->generateForm();
 } else {
@@ -27,6 +26,7 @@ if (empty($_POST['title'])) {
         // Récupérer les données des ingrédients depuis le formulaire
         $ingredientData = $_POST['ingredients'];
         $tagsData=$_POST['tags'];
+        var_dump($tagsData);
 
         // Tableau pour stocker les ingrédients
         $ingredients = array();
@@ -56,7 +56,7 @@ if (empty($_POST['title'])) {
         }
 
         if ($imgFile != null) {
-            $gf->createRecette($_POST['title'], $_POST['description'],$imgFile,$ingredients);
+            $gf->createRecette($_POST['title'], $_POST['description'],$imgFile,$ingredients,$tags);
         } else {
             echo "img vide";
         }

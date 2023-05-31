@@ -26,8 +26,6 @@ $gf = new \gdb\recetteForm();
             // Récupérer les données des ingrédients depuis le formulaire
             $ingredientData = $_POST['ingredients'];
             $tagsData = $_POST['tags'];
-            echo "hezllllleihojh";
-            var_dump($ingredientData);
 
             // Tableau pour stocker les ingrédients
             $ingredients = array();
@@ -56,7 +54,7 @@ $gf = new \gdb\recetteForm();
             }
 
             if ($imgFile != null) {
-                $gf->editRecette($_POST['title'], $_POST['description'], $imgFile, $ingredients, $tags);
+                $gf->editRecette($id,$_POST['title'], $_POST['description'], $imgFile, $ingredients, $tags);
             } else {
                 echo "img vide";
             }

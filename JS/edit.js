@@ -95,18 +95,17 @@ addButton0.addEventListener('click', () => {
     newTagInput.required = true;
     newTagInput.setAttribute('list', `tag-list-${tags.length}`);
 
-    // Création d'une datalist pour le nouveau tag input
-    const dataListHTML = `
-    <datalist id="tag-list-${tags.length}">
-                        <?php
+        // Création d'une datalist pour le nouveau tag input
+            const dataListHTML = `<datalist id="tag-list-${tags.length}">
+            <?php
                 $tag = new \gdb\tag();
                 $tags = $tag->generer_auto();
                 foreach ($tags as $t) {
-                    echo '<option value="' . $t->nom . '">';
+                    echo '<option value="<?= $t->nom ?>">';
                 }
-                ?>
-                    </datalist>
-  `;
+            ?>
+        </datalist>`;
+
 
     // Ajout du nouvel élément d'entrée de balise au conteneur
     tagContainer.innerHTML += newTagInput.outerHTML + dataListHTML;

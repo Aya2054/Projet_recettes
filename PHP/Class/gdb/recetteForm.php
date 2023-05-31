@@ -63,8 +63,8 @@ class recetteForm
                             <div class="ingredient-input">
                                 <select name="ingredients[0][unit]">
                                     <option value="g">grammes (g)</option>
-                                    <option value="ml">kilogrammes (kg)</option>
-                                    <option value="ml">litres (l)</option>
+                                    <option value="kg">kilogrammes (kg)</option>
+                                    <option value="l">litres (l)</option>
                                     <option value="ml">millilitres (ml)</option>
                                 </select>
                             </div>
@@ -120,7 +120,7 @@ class recetteForm
             </form>
         </section>
 
-        <script src="/../../Projet_recettes/JS/edit.js"></script>
+        <script src="/../../Projet_recettes/JS/Form.js"></script>
         <?php
     }
     private $titre, $description, $image;
@@ -266,7 +266,7 @@ class recetteForm
         foreach ($tags as $index => $tag) {
         ?>
         <div class="tag-container">
-            <input list="list-tag" id="tags" name="tags[<?php echo $index; ?>] value="<?php echo $tag->nom; ?>">
+            <input list="list-tag" id="tags" name="tags[<?php echo $index; ?>]" value="<?php echo $tag->nom; ?>">
 
             <datalist id="list-tag">
                 <?php
@@ -287,7 +287,7 @@ class recetteForm
         <input type="submit" value="Editer">
     </form>
 </section>
-        <script src="/../../Projet_recettes/JS/main.js"></script>
+        <script src="/../../Projet_recettes/JS/edit.js"></script>
 <?php }
 
 
@@ -295,8 +295,8 @@ class recetteForm
     {
         if ($this->gdb == null) $this->gdb = new \gdb\Recette();
         $this->gdb->create_recette($titre, $description, $imgFile, $ingredients,$tag);
-        header('location: recettes.php');
-        exit();
+        //header('location: recettes.php');
+       // exit();
     }
 
 

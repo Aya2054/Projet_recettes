@@ -7,7 +7,7 @@ const inputImage = document.getElementById("image");
 const imgPreview = document.querySelector("#grand-image img");
 
 // Ajout d'un écouteur d'événement "change" sur l'élément input de type file
-inputImage.addEventListener("change", function () {
+/*inputImage.addEventListener("change", function () {
 
     // Vérification que l'utilisateur a bien sélectionné un fichier
     if (this.files && this.files[0]) {
@@ -25,7 +25,7 @@ inputImage.addEventListener("change", function () {
         // Lecture du fichier sélectionné en tant que URL
         reader.readAsDataURL(this.files[0]);
     }
-});
+});*/
 
 
 
@@ -53,8 +53,8 @@ function addIngredient() {
 <div class="ingredient-input">
   <select name="ingredients[${i}][unit]">
     <option value="g">grammes (g)</option>
-                                    <option value="ml">kilogrammes (kg)</option>
-                                    <option value="ml">litres (l)</option>
+                                    <option value="kg">kilogrammes (kg)</option>
+                                    <option value="l">litres (l)</option>
                                     <option value="ml">millilitres (ml)</option>
   </select>
 </div>

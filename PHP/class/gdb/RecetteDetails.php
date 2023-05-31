@@ -70,8 +70,9 @@ class RecetteDetails
                     <h2>Ingrédients</h2>
                     <ol>
                         <?php
-                        foreach ($this->ingredients as $ingredient) : ?>
-                            <li><?=$ingredient->quantite?> <?= $ingredient->unite?> de <?= $ingredient->nom?></li>
+                        foreach ($this->ingredients as $ingredient) :?>
+
+                            <li><img src="/Projet_recettes/PHP/uploads/ingredients/<?= $ingredient->image ?>" class="mes_img" alt="#"><?=$ingredient->quantite?> <?= $ingredient->unite?> de <?= $ingredient->nom?></li>
                         <?php endforeach; ?>
                     </ol>
                 </div>
@@ -79,7 +80,11 @@ class RecetteDetails
                 <div class="recipe-tags">
                     <h2>Tags</h2>
                     <ul>
-                        <?php foreach ($this->tags as $tag) : ?>
+                        <?php
+                        $rec = new \gdb\Recette();
+                        $this->tags = $rec->getTagsById($this->id_recette);
+                        foreach ($this->tags as $tag) :?>
+
                             <li><?= $tag->nom ?></li>
                         <?php endforeach; ?>
                     </ul>
@@ -87,7 +92,7 @@ class RecetteDetails
 
             </div>
             <div class="recipe-directions">
-                <h2>Instructions</h2>
+                <h2>Description</h2>
                 <p><?= $this->description ?></p>
             </div>
         </div>
